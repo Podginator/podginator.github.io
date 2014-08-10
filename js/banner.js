@@ -20,13 +20,13 @@
 			if(radius > 260){
 				return;
 			}
-			radius += radius > 180 ? 5 : 10  
+			radius += radius > 180 ? 3 : 5  
 			opacity = 1 - radius / 260 
 
 			Draw();
 			setTimeout(function(){
 				SetupParticles()
-			}, 5)
+			}, 1)
 		};
 
 		function RenderRect(){
@@ -65,7 +65,7 @@
 
 			context.font = size+"px Source Sans Pro";
 			context.fillStyle = "#000"
-			context.fillText(txt,canvas.width/2-(context.measureText(txt).width)/2, canvas.height);
+			context.fillText(txt,canvas.width/2-(context.measureText(txt).width)/2, canvas.height/1.5);
 
 			context.restore()
 			
