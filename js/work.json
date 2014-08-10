@@ -1,0 +1,99 @@
+[
+	{
+		"name": "BJL Advertising",
+		"description": "Work that was done as an example of our new layout.",
+		"bwimage":"images/bjlcol.png",
+		"image": "images/bjl.png",
+		"screenshots":
+		[
+			{
+				"description":"Good king Moggy Mog",
+				"image": null
+			},
+			{
+				"description":"Good king Moggy Mog",
+				"image": null
+			},
+			{
+				"description":"Good king Moggy Mog",
+				"image": null
+			}
+
+		]
+	},
+	{
+		"name": "My Website V1",
+		"description": "Crappy work portfolio v1",
+		"image":"images/FirstWebsite.png",
+		"bwimage": "images/FirstWebsite.png",
+		"screenshots":
+		[
+			{
+				"description":"Good king Moggy Mog",
+				"image": null
+			},
+			{
+				"description":"Good king Moggy Mog",
+				"image": null
+			}
+
+		]
+	},
+	{
+		"name": "My Website V2",
+		"description": "Crappy work portfolio v1",
+		"image":"images/FirstWebsite.png",
+		"bwimage": "images/FirstWebsite.png",
+		"screenshots":
+		[
+			{
+				"description":"Good king Moggy Mog",
+				"image": null
+			},
+			{
+				"description":"Good king Moggy Mog",
+				"image": null
+			}
+
+		]
+	},
+	{
+		"name": "My Website V3",
+		"description": "Crappy work portfolio v1",
+		"image":"images/FirstWebsite.png",
+		"bwimage": "images/FirstWebsite.png",
+		"screenshots":
+		[
+			{
+				"description":"Good king Moggy Mog",
+				"image": null
+			},
+			{
+				"description":"Good king Moggy Mog",
+				"image": null
+			}
+
+		]
+	},
+	{
+		"name": "My Website V4",
+		"description": "Crappy work portfolio v1",
+		"image":"images/FirstWebsite.png",
+		"bwimage": "images/FirstWebsite.png",
+		"screenshots":
+		[
+			{
+				"description":"Good king Moggy Mog",
+				"image": null
+			},
+			{
+				"description":"Good king Moggy Mog",
+				"image": null
+			}
+
+		]
+	}
+
+
+
+]
