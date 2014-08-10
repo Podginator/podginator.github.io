@@ -8,13 +8,22 @@
 		radius= 1,
 		smaller = 1,
 		opacity = 1,
+		fontOp=0,
 		angle=45,
 		xPos=0;
-	
+		
+		window.addEventListener('resize', Resize, false);
 		canvas.onmousemove  = OnMouseMove
 		SetupParticles()
 		Draw();
 
+
+
+		function Resize(){
+			//canvas.height=$(this).height();
+			canvas.width=$(this).width();
+			Draw();
+		}
 
 		function SetupParticles() {
 			if(radius > 260){
@@ -38,37 +47,31 @@
 			grd.addColorStop(1,"rgba(0,0,0,0)");
 
 			context.save()
+				context.translate(centerX, centerY);
+				radianAngle = angle*(3.14/180);
+				context.rotate(radianAngle);
 
-			context.translate(centerX, centerY);
-			radianAngle = angle*(Math.PI/180)
-			console.log(angle)
-			context.rotate(radianAngle);
-			//DrawRect
-			context.beginPath();
-		    context.rect(0, 0-smaller, canvas.width, smaller*2);
-		    context.fillStyle = grd;
-		    context.fill();
-		    //
-
+				context.beginPath();
+			    context.rect(0, 0-smaller, canvas.width, smaller*2);
+			    context.fillStyle = grd;
+			    context.fill();
 		    context.restore()
 		}
 
 		function RenderText(txt, y){
-
 			context.save()
+				fontOp+=  3/80;
 
-			context.shadowColor = "#bbb";
-		    context.shadowBlur = 4
-		    context.shadowOffsetX = xPos > 0 ? -5 : 5;
-	      	context.shadowOffsetY = xPos > 0 ? -((angle-180)/(90/5)): (angle/(90/5))
-			size = GetFontSize(txt)
+				context.shadowColor = "rgba(200,200,200,"+fontOp+")";
+			    context.shadowBlur = 4
+			    context.shadowOffsetX = xPos > 0 ? -5 : 5;
+		      	context.shadowOffsetY = xPos > 0 ? -((angle-180)/(90/5)): (angle/(90/5))
 
-			context.font = size+"px Source Sans Pro";
-			context.fillStyle = "#000"
-			context.fillText(txt,canvas.width/2-(context.measureText(txt).width)/2, canvas.height/1.5);
-
-			context.restore()
+				context.font = 270+"px Source Sans Pro";
+				context.fillStyle = "rgba(0,0,0,"+fontOp+")";
+				context.fillText(txt,canvas.width/2-(context.measureText(txt).width)/2, canvas.height/1.4);
 			
+			context.restore()
 		}
 
 
@@ -79,37 +82,24 @@
       		context.fill()
 		}
 
-		function GetFontSize(text){
-			size = 0;
-			context.font = size+"px Source Sans Pro";
-
-			while(context.measureText(text).width < smaller*1.25){
-				size++
-				context.font = size+"px Source Sans Pro";
-			}
-
-			return size;
-
-		}
-
 		function Draw() {
-
 			context.clearRect( 0, 0, canvas.width, canvas.height );
 			smaller = radius > 180 ? 180 : radius
-			
 			RenderRect()
-
 			RenderCircle(radius,"255,255,255", opacity)
       		RenderCircle(smaller,"255,255,255", "1")
-			RenderText("Hi")
-
+      		if(smaller == 180){
+				RenderText("Hi")
+			}
 		};
 
 		function OnMouseMove(e){
 			var calculateAngle = e.clientY;
 			xPos = e.clientX-$(this).position().left > canvas.width/2 ? 180 : -180
 			angle = calculateAngle/(canvas.height/xPos)+90
-			Draw()
+			angle =  angle < -65 ? -65 : angle;
+			angle = angle > 250 ? 250 : angle;
+			Draw();
 		}	
 	}
 })(jQuery);
