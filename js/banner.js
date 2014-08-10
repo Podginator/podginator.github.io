@@ -5,7 +5,6 @@
 		context = canvas.getContext('2d');
 		canvas.height=$(this).height();
 		canvas.width=$(this).width();
-		isDrawing = false,
 		radius= 1,
 		smaller = 1,
 		opacity = 1,
@@ -27,7 +26,7 @@
 			Draw();
 			setTimeout(function(){
 				SetupParticles()
-			}, 1)
+			}, 5)
 		};
 
 		function RenderRect(){
@@ -66,7 +65,7 @@
 
 			context.font = size+"px Source Sans Pro";
 			context.fillStyle = "#000"
-			context.fillText(txt,canvas.width/2-(context.measureText(txt).width)/2, 360-20);
+			context.fillText(txt,canvas.width/2-(context.measureText(txt).width)/2, canvas.height/1.5);
 
 			context.restore()
 			
