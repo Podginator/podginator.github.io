@@ -15,9 +15,8 @@ function DoClip(div, x, y){
 	}, 10);
 
 }
-	$('#Welcome').Banner();
 $( document ).ready(function() {
-
+		$('#Welcome').Banner();
 		var counter = 0
 
 		$('.imgcontainer').click(function(e){

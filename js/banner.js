@@ -65,7 +65,7 @@
 
 			context.font = size+"px Source Sans Pro";
 			context.fillStyle = "#000"
-			context.fillText(txt,canvas.width/2-(context.measureText(txt).width)/2, canvas.height/1.5);
+			context.fillText(txt,canvas.width/2-(context.measureText(txt).width)/2, canvas.height);
 
 			context.restore()
 			
@@ -101,7 +101,6 @@
 
 			RenderCircle(radius,"255,255,255", opacity)
       		RenderCircle(smaller,"255,255,255", "1")
-      		
 			RenderText("Hi")
 
 		};
