@@ -1,5 +1,5 @@
 (function(){
-	$.fn.Banner = function(text){
+	$.fn.Banner = function(){
 		var	canvas, context, cloneArray, bgCanvas, bgContext, canvasW, canvasH,	
 		canvas 	= document.getElementById($(this).attr('id'));
 		context = canvas.getContext('2d');
