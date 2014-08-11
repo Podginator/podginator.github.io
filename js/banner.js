@@ -35,7 +35,7 @@
 			Draw();
 			setTimeout(function(){
 				SetupParticles()
-			}, 1)
+			}, 5)
 		};
 
 		function RenderRect(){
