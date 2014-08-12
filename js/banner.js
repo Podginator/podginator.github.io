@@ -1,10 +1,10 @@
 (function(){
 	$.fn.Banner = function(){
-		var	canvas, context, cloneArray, bgCanvas, bgContext, canvasW, canvasH,	
+		var	canvas, context, canvasW, canvasH,	
 		canvas 	= document.getElementById($(this).attr('id'));
 		context = canvas.getContext('2d');
-		canvas.height=$(this).height();
-		canvas.width=$(this).width();
+		canvas.height=480;
+		canvas.width=$(this).width()
 		radius= 1,
 		smaller = 1,
 		opacity = 1,
@@ -20,8 +20,6 @@
 
 
 		function Resize(){
-			//canvas.height=$(this).height();
-			canvas.width=$(this).width();
 			Draw();
 		}
 

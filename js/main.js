@@ -1,22 +1,18 @@
-function DoClip(div, x, y,size){
-	var circle = "circle(1px at "+x+"px "+y+"px)"
-	console.log(circle)
-	$(div).css({
-		"-webkit-clip-path": circle,
-		"clip-path": circle
-	});
+function getEffect(x,y,size){
+	var opacity = size > 1 ? 1 : 0;
+	return $.browser.mozilla ? 	{"opacity": opacity} : {"-webkit-clip-path": "circle("+size+"px at "+x+"px "+y+"px)"} 
+}
 
+function DoClip(div, x, y, size){
+	$(div).css(getEffect(x,y,0));
 	setTimeout(function(){
-		circle =  "circle("+size+"px at "+x+"px "+y+"px)" 
-		$(div).css({
-			"-webkit-clip-path": circle,
-			"clip-path": circle
-		});
-	}, 10);
+		$(div).css(getEffect(x,y,size));
+	}, 20);
 }
 
 function HideAll(div){
 	$(div).each(function(){
+		console.log(this)
 		$(this).hide();
 	});
 }
@@ -43,7 +39,7 @@ $( document ).ready(function() {
 			$(this).find('.overlay').show();
 
 			DoClip($(this).find('.overlay'), e.offsetX, e.offsetY, 200);
-			var header = $(this).text().replace(/\s/g, '');;
+			var header = $(this).text()
 			$('.abouttext .identifier h2').text(header.toUpperCase());
 
 			HideAll('.content p');
