@@ -5,6 +5,7 @@
 		<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400" rel='stylesheet' type='text/css'>
 		<title>Thomas Rogers Portfolio</title>
 		<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+		<script src="https://maps.googleapis.com/maps/api/js"></script>
 		<script type="text/javascript" src="js/banner.js"></script>
 		<script type="text/javascript" src="js/main.js"></script>
 		<link rel="stylesheet" href="css/main.css" />
@@ -30,7 +31,7 @@
 
 		<section id="AboutMe">
 			<div class="container">
-				<div class="imgcontainer img1 hide"></div>
+				<div class="imgcontainer index img1 hide"></div>
 				<div class="imgcontainer img2 hide"></div>
 				<div class="imgcontainer img3"></div>
 
@@ -56,14 +57,52 @@
 					</div>
 				</div>
 			</div>
-
 		</section>
+
 		<section id="Work">
-
+			<div class="container">
+				<div class="worktile"></div>
+				<div class="worktile"></div>
+				<div class="worktile"></div>
+				<div class="worktile"></div>
+				<div class="worktile"></div>
+				<div class="worktile"></div>
+			</div>
 		</section>
+
 		<section id="ContactMe">
 			<div class="container">
 				<h1> CONTACT ME </h1>
+
+				<div class="contactsection">
+					<h2>Postal Address</h2>
+					<p>
+						21 Irving Street<br/>
+						Oldham, <br/>
+						Manchester,<br/>
+						OL8 4RQ<br/>
+						United Kingdom<br/>
+						<br/>
+						T: 07415 382224 <br/>
+						E: Podginator@gmail.com<br/>
+					</p>
+				</div>
+
+				<div class="contactsection">
+					<h2>Contact Form</h2>
+					<form action="http://getsimpleform.com/messages?form_api_token=3a16f7a0e825efe793d9376e0947aa6d" method="post">
+						<input type="text" name="Name" placeholder="Name"><br/>
+						<input type="text" name="email" placeholder="Email"><br/>
+						<textarea name="comments" cols="25" rows="5" placeholder="Message"></textarea>
+						<input type="submit" value="Submit">
+					</form>
+				</div>
+
+				<div class="contactsection">
+					<h2>Map</h2>
+					<img src="images/map.png"/>
+				</div>
+
 			</div>
 		</section>
 	</body>

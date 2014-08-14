@@ -10,6 +10,17 @@ body{
 }
 
 /*Navigation*/
+
+h1{
+	color: white;
+	text-align:center;
+	font-size:50px;
+	padding-top:20px;
+	padding-bottom:20px;
+	font-weight:100;
+}
+
+
 nav{
 	text-align:right;
 	width:100%;
@@ -52,6 +63,8 @@ header{
 }
 
 .container{
+	position:relative;
+	overflow:hidden;
 	width:100%;
 	height:480px;
 	max-width:960px;
@@ -68,10 +81,16 @@ header{
 	color:white;
 }
 #Welcome{
+	position:absolute;
+	left:50%;
+    top: 0px;
+    margin: auto;
 	width:960px;
 	height:480px;
+	margin-left:-480px;
 	text-align: center
 }
+
 
 
 /*About Me*/
@@ -88,14 +107,15 @@ header{
 
 #AboutMe .imgcontainer{
 	position:absolute;
-	left:0;
+	left:5px;
 	background-size: 300px 366px;
 	border-radius: 3px;
+	-webkit-box-shadow: 2px 2px 5px 1px rgba(31, 31, 31, 0.25);
+	box-shadow: 2px 2px 5px 1px rgba(31, 31, 31, 0.25);
 	top:25px;
 	width:300px;
 	height:366px;
-	-webkit-box-shadow: 2px 2px 5px 1px rgba(31, 31, 31, 0.25);
-	box-shadow: 2px 2px 5px 1px rgba(31, 31, 31, 0.25);
+	
 }
 
 #AboutMe .abouttext{
@@ -105,8 +125,9 @@ header{
 	border-radius: 3px;
 	top:55px;
 	background:white;
-	width:650px;
+	margin-right:5px;
 	height:336px;
+	border-radius: 3px;
 	-webkit-box-shadow: 2px 2px 5px 1px rgba(31, 31, 31, 0.25);
 	box-shadow: 2px 2px 5px 1px rgba(31, 31, 31, 0.25);
 }
@@ -147,8 +168,8 @@ header{
 	font-size:20px;
 	line-height:30px;
 	text-align:center;
-	width:214px;
-	display:inline-block;
+	width:33%;
+	float:left;
 	top:0px;
 	transition: all 0.2s ease-in-out;
 }
@@ -165,12 +186,12 @@ header{
 	background:rgba(86,119,252,1);
 	position:absolute;
 	top:0px;
-	transition: all 0.5s ease-in-out;
+	transition: all 0.3s ease-in-out;
 }
 
 
 .selectors li:hover{
-	background:#CECECE;
+	background:#F0F0F0;
 }
 
 
@@ -200,9 +221,36 @@ header{
 /* Work */
 #Work{
 	width:100%;
-	height:550px;
+	height:auto;
 	background:#aaa;
+	padding: 10px 0 10px 0;
 }
+
+#Work .container{
+	height:auto;
+}
+
+#Work .worktile{
+	float:left;
+	width:32.8%;
+	height:300px;
+	margin:0.2%;
+	background:white;
+	transition: all 0.2s ease-in-out;
+}
+
+#Work .worktile:hover{
+	-moz-box-shadow: 0 17px 50px 0 rgba(0,0,0,.19);
+	-webkit-box-shadow: 0 17px 50px 0 rgba(0,0,0,.19);
+	box-shadow: 0 17px 50px 0 rgba(0,0,0,.19);
+	position: relative;
+	z-index: 100;
+}
+
+#Work .worktile:nth-child(3){
+	clear:right;
+}
+
 
 
 
@@ -211,18 +259,109 @@ header{
 	color:white;
 	font-size:20px;
 	width:100%;
-	height:550px;
+	height:auto;
 	background:#111;
 }
 
-#ContactMe h1{
-	color: white;
-	text-align:center;
-	font-size:50px;
-	padding-top:20px;
-	padding-bottom:20px;
-	font-weight:100;
+#ContactMe .container{
+	height:auto;
 }
+
+#ContactMe .contactsection{
+	float:left;
+	width:32%;
+	margin: 10px 0.5% 0 0.5%;
+	height:450px;
+}
+
+#ContactMe .contactsection h2{
+	text-decoration: underline;
+	font-size:24px;
+	text-align:center;
+	margin-bottom:10px;
+}
+
+#ContactMe .contactsection p {
+	text-align:center;
+}
+
+#ContactMe .contactsection form{
+	width:100%;
+}
+
+#ContactMe .contactsection form input {
+	width:100%;
+	height:30px;
+	background:none;
+	color:white;
+	font-size:16px;
+	border:none;
+	border-bottom:1px solid #c8c8c8;
+	margin-bottom:5px;
+}
+
+#ContactMe .contactsection form input::-webkit-input-placeholder {
+	color:#686868;
+}
+#ContactMe .contactsection form input:-moz-input-placeholder {
+	color:#686868;
+}
+#ContactMe .contactsection form input:-ms-input-placeholder {
+	color:#686868;
+}
+#ContactMe .contactsection form textarea::-webkit-input-placeholder {
+	color:#686868;
+}
+#ContactMe .contactsection form textarea:-moz-input-placeholder {
+	color:#686868;
+}
+#ContactMe .contactsection form textarea:-ms-input-placeholder {
+	color:#686868;
+}
+
+
+#ContactMe .contactsection form input:focus {
+	border-bottom:3px solid #2196f3;
+	outline-width:0px;
+}
+
+#ContactMe .contactsection form textarea:focus {
+	border-bottom:3px solid #2196f3;
+	outline-width:0px;
+}
+
+
+#ContactMe .contactsection form textarea {
+	width:100%;
+	height:30px;
+	background:none;
+	color:white;
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size:16px;
+	height:100px;
+	border:none;
+	border-bottom:1px solid #c8c8c8;
+	margin-bottom:5px;
+}
+#map_canvas {
+		margin:auto;
+        width: 80%;
+        padding-bottom: 80%;
+        border-radius:50%;
+        border:2px solid blue;
+      }
+#ContactMe .contactsection form button {
+	width:100%;
+}
+
+#ContactMe .contactsection img {
+	width:80%;
+	margin:auto;
+	margin-left:10%;
+	margin-left:10%;
+}
+
+
 
 @media screen and (max-width: 500px){
 	nav{
@@ -248,6 +387,8 @@ header{
 
 	#Welcome{
 		width:100%;
+		margin-left:0px;
+		left:0px;
 	}
 
 	.additional{
@@ -284,6 +425,20 @@ header{
 
 	}
 
+	#Work .worktile{
+		float:none;
+		width:300px;
+		margin:auto;
+		margin-top:5px;
+		margin-bottom:5px;
+	}
 
+	#ContactMe .contactsection{
+		float:none;
+		width:300px;
+		margin:auto;
+		height:auto;
+		margin-bottom:30px;
+	}
 
 }

@@ -1,7 +1,6 @@
 (function(){
 	$.fn.Banner = function(){
-		var	canvas, context, canvasW, canvasH,	
-		canvas 	= document.getElementById($(this).attr('id'));
+		var	canvas 	= document.getElementById($(this).attr('id')),
 		context = canvas.getContext('2d');
 		canvas.height=480;
 		canvas.width=$(this).width()
@@ -18,9 +17,12 @@
 		Draw();
 
 
-
 		function Resize(){
-			Draw();
+			if($(window).width() < 500)
+			{
+				canvas.width=$(this).width()
+				Draw();
+			}
 		}
 
 		function SetupParticles() {
@@ -72,7 +74,6 @@
 			context.restore()
 		}
 
-
 		function RenderCircle(size, color, opacity){
 			context.beginPath();
       		context.arc(canvas.width/2, canvas.height/2, size, 0, 2 * Math.PI, false);
@@ -93,7 +94,7 @@
 
 		function OnMouseMove(e){
 			var calculateAngle = e.clientY;
-			xPos = e.clientX-$(this).position().left > canvas.width/2 ? 180 : -180
+			xPos = e.clientX-($(this).position().left) > canvas.width/2 ? 180 : -180
 			angle = calculateAngle/(canvas.height/xPos)+90
 			angle =  angle < -65 ? -65 : angle;
 			angle = angle > 250 ? 250 : angle;

@@ -18,7 +18,6 @@ function HideAll(div){
 }
 $( document ).ready(function() {
 		$('#Welcome').Banner();
-
 		$('.imgcontainer').click(function(e){
 			var selector = $(this).index() > 0 ? '.imgcontainer.img'+$(this).index() : '.imgcontainer.img3';
 			var currentDiv = $(this)
@@ -34,7 +33,6 @@ $( document ).ready(function() {
 		});
 
 		$('.selector li').click(function(e){
-			
 			HideAll('.selector li .overlay');
 			$(this).find('.overlay').show();
 
