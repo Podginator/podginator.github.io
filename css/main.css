@@ -27,9 +27,11 @@ nav{
 	height:40px;
 	background:black;
 	z-index:10;
+	z-index:1000;
 	line-height:40px;
 	position:fixed;
 	font-size:22px;
+	transition: all 1s ease-in-out;
 }
 
 nav a{
@@ -233,6 +235,7 @@ header{
 #Work .worktile{
 	float:left;
 	width:32.8%;
+	opacity:0;
 	height:300px;
 	margin:0.2%;
 	background:white;
@@ -260,7 +263,7 @@ header{
 	font-size:20px;
 	width:100%;
 	height:auto;
-	background:#111;
+	background:#333333;
 }
 
 #ContactMe .container{
@@ -286,7 +289,8 @@ header{
 }
 
 #ContactMe .contactsection form{
-	width:100%;
+	width:80%;
+	margin:auto;
 }
 
 #ContactMe .contactsection form input {
@@ -360,8 +364,6 @@ header{
 	margin-left:10%;
 	margin-left:10%;
 }
-
-
 
 @media screen and (max-width: 500px){
 	nav{
