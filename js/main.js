@@ -164,6 +164,6 @@ $( document ).ready(function() {
 		$('.worktile img').click(function(){
 			var overlay = $(this).parent().find(".overlay")
 			$(this).parent().find(".overlay").css({background: GetDominantColour(overlay), zIndex:200})
-			DoClip(overlay, this.height/2, this.width/2, 200);
+			DoClip(this, this.height/2, this.width/2, 200);
 		});
 });
