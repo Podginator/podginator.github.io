@@ -20,7 +20,6 @@ h1{
 	font-weight:100;
 }
 
-
 nav{
 	text-align:right;
 	width:100%;
@@ -230,16 +229,34 @@ header{
 
 #Work .container{
 	height:auto;
+	max-width:1200px;
 }
 
 #Work .worktile{
 	float:left;
-	width:32.8%;
+	position:relative;
+	width:24.5%;
+	height:100%;
 	opacity:0;
-	height:300px;
 	margin:0.2%;
 	background:white;
 	transition: all 0.2s ease-in-out;
+}
+
+#Work .worktile h2{
+	position:absolute;
+	z-index:3;
+	font-size:20px;
+	color:white;
+	top:75%;
+	left:5%;
+}
+
+#Work .worktile img{
+	width:100%;
+	top:0;
+	position:relative;
+	z-index:2;
 }
 
 #Work .worktile:hover{
@@ -250,10 +267,21 @@ header{
 	z-index: 100;
 }
 
+
+
 #Work .worktile:nth-child(3){
 	clear:right;
 }
 
+#Work .worktile .overlay{
+	width:100%;
+	height:100%;
+	z-index:0;
+	position:absolute;
+	top:0;
+	background: #FFF;
+	transition: all 0.3s ease-in-out;
+}
 
 
 
@@ -348,12 +376,12 @@ header{
 	margin-bottom:5px;
 }
 #map_canvas {
-		margin:auto;
-        width: 80%;
-        padding-bottom: 80%;
-        border-radius:50%;
-        border:2px solid blue;
-      }
+	margin:auto;
+    width: 80%;
+    padding-bottom: 80%;
+    border-radius:50%;
+    border:2px solid blue;
+}
 #ContactMe .contactsection form button {
 	width:100%;
 }
@@ -363,6 +391,15 @@ header{
 	margin:auto;
 	margin-left:10%;
 	margin-left:10%;
+}
+
+
+@media screen and (max-width: 1000px){
+	#Work .worktile{
+		width:32.8%;
+		margin:0.2%;
+	}
+
 }
 
 @media screen and (max-width: 500px){
