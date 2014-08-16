@@ -165,6 +165,6 @@ $( document ).ready(function() {
 			console.log(this)
 			var overlay = $(this).parent().find(".overlay")
 			overlay.css({background: GetDominantColour(this), zIndex:200})
-			DoClip(overlay, this.height/2, this.width/2, 600);
+			DoClip(overlay, this.height/2, this.width/2, 300);
 		});
 });
