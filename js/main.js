@@ -115,7 +115,7 @@ $( document ).ready(function() {
 				div.css({opacity: 0})
 			}, 100);
 			
-			overlay.css({background: "blue", zIndex:200});
+			overlay.css({background: GetDominantColour(img), zIndex:200});
 			DoClip(overlay, this.height/2, this.width/2, 300);
 
 			setTimeout(function(){
