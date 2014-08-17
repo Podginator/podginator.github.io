@@ -51,19 +51,32 @@ function ScrollCheck() {
 
 var prevLeft = 0;
 
+
+//Comment this at some point, it's gonna suck to go back to.
+
 $( document ).ready(function() {
 		$('#Welcome').Banner();
 		var workHeight =  $('.worktile').width()
+
+		//Need a static height in order to css animate height (js too.)
 		$('.worktile').css({height: workHeight})
 
+		$( window ).resize(function() {
+			workHeight = $('.worktile').width();
+ 			$('.worktile').css({height: workHeight});
+		});
+
 		$('.imgcontainer').click(function(e){
+			//Cycle through the pictures of myself
 			var selector = $(this).index() > 0 ? '.imgcontainer.img'+$(this).index() : '.imgcontainer.img3';
 			var currentDiv = $(this)
 			$(this).removeClass('index')
 			$(selector).removeClass("hide").addClass('index')
+			//Perform the circle clip, fading in on firefox (Unfortunately.)
 			DoClip(selector, e.offsetX, e.offsetY,550);
 
 			setTimeout(function(){
+				//Then hide it when it's out of view.
 				currentDiv.addClass('hide');
 			},1000);
 
@@ -76,15 +89,21 @@ $( document ).ready(function() {
 			DoToAll($('.selector li .overlay'), function(div){
 				 $(div).hide();
 			 });
+
 			$(this).find('.overlay').show();
+
 			DoClip($(this).find('.overlay'), e.offsetX, e.offsetY, 200);
+			
 			$($('.abouttext .identifier h2')).text(header.toUpperCase());
+			
 			DoToAll($('.content p'), function(div){ 
 				div.hide();
 			 });
+			
 			$('.content .'+header).show();
 		});
 
+		//Initial Scroll (Are all things in view?)
 		$(window).scroll(function(){
 			ScrollCheck();
 
@@ -99,12 +118,14 @@ $( document ).ready(function() {
 			}
 		}) 
 
+		//Auto Page SCrolling
 		$('nav a').click(function(){
 			$('html, body').stop().animate({
 				scrollTop:$("#"+$(this).attr('href')).offset().top -40
 			},1000);
 			return false;
 		});
+
 
 		$('.worktile img').click(function(){
 			var img = $(this);
@@ -117,7 +138,7 @@ $( document ).ready(function() {
 				div.css({opacity: 0})
 			}, 100);
 			
-			overlay.css({background: GetDominantColour(this), zIndex:200});
+			overlay.css({background:GetDominantColour(this), zIndex:200});
 			DoClip(overlay, this.height/2, this.width/2, 300);
 
 			setTimeout(function(){
@@ -134,7 +155,7 @@ $( document ).ready(function() {
 						}, 500);
 					}, 300);
 				}, 50);
-			}, 800);
+			}, 400);
 
 			
 		});
@@ -152,7 +173,6 @@ $( document ).ready(function() {
 				parent.find('img').css({display:'block', opacity:0})
 				setTimeout(function(){
 					parent.find('img').css({opacity:1})
-					console.log(img.height()/2, img.width()/2, parent.parent().width(), parent.parent().height())
 					DoClip(parent.find('img'), img.height()/2, img.width()/2, 500);
 					setTimeout(function(){
 						ApplyChildren(parent, function(div){div.removeAttr('style')})

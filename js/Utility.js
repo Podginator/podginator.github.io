@@ -64,7 +64,6 @@ function GetMode(data){
 		}
 	}
 
-	console.log(maxCount)
 	return maxCount;
 }
 
