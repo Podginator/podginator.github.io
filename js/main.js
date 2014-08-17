@@ -115,7 +115,7 @@ $( document ).ready(function() {
 				div.css({opacity: 0})
 			}, 100);
 			
-			overlay.css({background: GetDominantColour(this), zIndex:200});
+			overlay.css({background:GetDominantColour(this), zIndex:200});
 			DoClip(overlay, this.height/2, this.width/2, 300);
 
 			setTimeout(function(){
@@ -132,7 +132,7 @@ $( document ).ready(function() {
 
 			setTimeout(function(){
 				parent.find('.big').css({ zIndex:201, display:"block"});
-				DoClip(parent.find('.big'), 0, 0, 2000);
+				DoClip(parent.find('.big'), 0, 100, 2000);
 			},1010)
 
 
