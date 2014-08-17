@@ -49,10 +49,12 @@ function ScrollCheck() {
 	}
 }
 
+var prevLeft = 0;
+
 $( document ).ready(function() {
 		$('#Welcome').Banner();
-
-		$('.worktile').css({height: $('.worktile').width()})
+		var workHeight =  $('.worktile').width()
+		$('.worktile').css({height: workHeight})
 
 		$('.imgcontainer').click(function(e){
 			var selector = $(this).index() > 0 ? '.imgcontainer.img'+$(this).index() : '.imgcontainer.img3';
@@ -109,37 +111,61 @@ $( document ).ready(function() {
 			var parent = $(this).parent();
 			var overlay = parent.find(".overlay");
 			var offset = RelativeDistance($('#Work .container'), parent);
-
+			prevLeft = offset
 			
 			DoToAll($(".worktile").not($(this).parent()), function(div){
 				div.css({opacity: 0})
 			}, 100);
 			
-			overlay.css({background:GetDominantColour(this), zIndex:200});
+			overlay.css({background: GetDominantColour(this), zIndex:200});
 			DoClip(overlay, this.height/2, this.width/2, 300);
 
 			setTimeout(function(){
-				//overlay.css();
 				$('.worktile').not(parent).css({display:'none'});
 				parent.find('img').hide();
 				parent.css({left: offset})
+				setTimeout(function(){
+					parent.css({width: "100%", left:0, height:"500" })
+					overlay.css({ "-webkit-clip-path": "none", background:"white"})
+					setTimeout(function(){
+						overlay.find(".identifier").slideDown();
+						setTimeout(function(){
+							overlay.children().fadeIn();
+						}, 500);
+					}, 300);
+				}, 50);
 			}, 800);
-
-			setTimeout(function(){
-				parent.css({width: "100%", left:0, height:"156px" })
-				overlay.css({ "-webkit-clip-path": "none"})
-			}, 850);
-
-			setTimeout(function(){
-				parent.find('.big').css({ zIndex:201, display:"block"});
-				DoClip(parent.find('.big'), 0, 100, 2000);
-			},1010)
-
-
-
-			
-
 
 			
 		});
+
+		$('.overlay span').click(function(){
+			var parent = $(this).parent().parent().parent();
+			var img = parent.find('img');2
+
+			//console.log(parent.children())
+			ApplyChildren(parent, function(div){div.removeAttr('style')})
+			parent.css({width:"24.5%", left: prevLeft, height:workHeight})
+
+			$(this).parent().parent().find('div').fadeOut(function(){
+				$(this).parent().css({display:'none'})
+				parent.find('img').css({display:'block', opacity:0})
+				setTimeout(function(){
+					parent.find('img').css({opacity:1})
+					console.log(img.height()/2, img.width()/2, parent.parent().width(), parent.parent().height())
+					DoClip(parent.find('img'), img.height()/2, img.width()/2, 500);
+					setTimeout(function(){
+						ApplyChildren(parent, function(div){div.removeAttr('style')})
+						$('.worktile').css({left:0})
+						DoToAll($('.worktile'), function(div){
+							div.removeAttr('style');
+							div.css({height:workHeight})
+							div.show();
+							div.animate({opacity:1})
+						},10)
+					},500)
+				}, 500);
+				
+			});
+		})
 });

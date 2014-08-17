@@ -225,11 +225,13 @@ header{
 	height:auto;
 	background:#aaa;
 	padding: 10px 0 10px 0;
+	min-height:598px;
 }
 
 #Work .container{
 	height:auto;
 	max-width:1200px;
+	min-height:500px;
 }
 
 #Work .worktile{
@@ -257,6 +259,7 @@ header{
 	top:0;
 	position:relative;
 	z-index:2;
+	transition:  -webkit-clip-path 0.5s ease-in-out;
 }
 
 #Work .worktile:hover{
@@ -268,14 +271,10 @@ header{
 }
 
 
-.big{
-	display:none;
-	width:auto;
-	transition: all 1s ease-in-out;
-}
 
 
-#Work .worktile:nth-child(3){
+
+#Work .worktile:nth-child(3){2
 	clear:right;
 }
 
@@ -289,7 +288,34 @@ header{
 	transition: all 0.3s ease-in-out;
 }
 
+#Work .worktile .overlay div{
+	display:none;
+}
 
+#Work .worktile .overlay .identifier span{
+	float:right;
+	position:absolute;
+	top:0px;
+	margin-right:10px;
+	right:10px;
+}
+
+#Work .worktile .overlay h3{
+	color:white;
+}
+
+#Work .worktile .overlay .desc{
+	margin-top:10px;
+	width:45%;
+	margin: 10px 1.25% 0 2.5%;
+	float:left;
+}
+
+#Work .worktile .overlay .images{
+	width:45%;
+	margin: 10px 2.5% 0 1.25%;
+	float:left;
+}
 
 /*Contact Me */
 #ContactMe{

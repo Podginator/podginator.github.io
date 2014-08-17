@@ -14,6 +14,25 @@ function DoToAll(div, fn, delay){
 	});	
 }
 
+
+function ApplyChildren(div, fn){
+	try{
+		var children = div.children();
+	}catch(err){
+		console.log("El can't have children, returning.", div);
+		return;
+	}
+
+	var i = 0;
+	while(i != children.length){
+		var childDiv = $(children[i]);
+		fn(childDiv)
+		ApplyChildren(childDiv, fn);
+		i++
+	}
+}
+
+
 function RoundToTen(num){
 	return Math.round(num/10)*10;
 }
