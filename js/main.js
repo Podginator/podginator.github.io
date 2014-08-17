@@ -57,6 +57,7 @@ var prevLeft = 0;
 $( document ).ready(function() {
 		$('#Welcome').Banner();
 		var workHeight =  $('.worktile').width()
+		var workWidth = $('.worktile').css("width");
 
 		//Need a static height in order to css animate height (js too.)
 		$('.worktile').css({height: workHeight})
@@ -132,7 +133,7 @@ $( document ).ready(function() {
 			var parent = $(this).parent();
 			var overlay = parent.find(".overlay");
 			var offset = RelativeDistance($('#Work .container'), parent);
-			prevLeft = offset
+			prevLeft = $(window).width() > 500 ? offset : 0;
 			
 			DoToAll($(".worktile").not($(this).parent()), function(div){
 				div.css({opacity: 0})
@@ -164,9 +165,8 @@ $( document ).ready(function() {
 			var parent = $(this).parent().parent().parent();
 			var img = parent.find('img');2
 
-			//console.log(parent.children())
 			ApplyChildren(parent, function(div){div.removeAttr('style')})
-			parent.css({width:"24.5%", left: prevLeft, height:workHeight})
+			parent.css({width:'', left: prevLeft, height:workHeight})
 
 			$(this).parent().parent().find('div').fadeOut(function(){
 				$(this).parent().css({display:'none'})
