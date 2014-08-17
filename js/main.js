@@ -3,77 +3,11 @@ function getEffect(x,y,size){
 	return $.browser.mozilla ? 	{"opacity": opacity} : {"-webkit-clip-path": "circle("+size+"px at "+x+"px "+y+"px)"} 
 }
 
-function toggleContainers(div)
-{
-	$.each($(div), function(i){
-		var div = this;
-		setTimeout(function(){
-			$(div).animate({opacity:1})
-		}, (i+1)*100);
-	});	
-}
-
 function DoClip(div, x, y, size){
 	$(div).css(getEffect(x,y,0));
 	setTimeout(function(){
 		$(div).css(getEffect(x,y,size));
 	}, 20);
-}
-
-function HideAll(div){
-	$(div).each(function(){
-		$(this).hide();
-	});
-}
-
-function RoundToTen(num){
-	return Math.round(num/10)*10;
-}
-
-function GetMode(data){
-	var modeMap = {};
-	var maxEl,
-	maxCount = 1,
-	i = 1;
-	while (data[i++] != null){
-		var colour = data[i];
-		if (modeMap[colour]!=null)
-		{
-			modeMap[colour] += 1
-		}else{
-			modeMap[colour] = 1
-		}
-
-		if(modeMap[colour] > maxCount && colour != 0){
-			maxCount = colour
-		}
-	}
-
-	console.log(maxCount)
-	return maxCount;
-}
-
-function GetAverage(data){
-	var i = 1,
-	count = 0,
-	total = 0
-	while(data[i++] != null){
-		if(data[i] != 0 && data[i] != undefined){
-			total += data[i]
-			++count
-		}
-	}
-	return Math.floor(total/count);
-
-}
-
-function stringToHex(s){
-	var hex = s.toString(16);
-	return hex.length == 1? "0" + hex : hex;
-}
-
-function RGBToHex(r,g,b){
-	return "#" + stringToHex(r) + stringToHex(g) + stringToHex(b)
 }
 
 function GetDominantColour(image){
@@ -103,17 +37,22 @@ function OnScreen(div){
 	var divTop = $(div+":first").offset().top;
 	var divBottom = $(div).height() + divTop
 
-	return ((divTop<= windowBottom));
+	return (divTop<= windowBottom);
 }
 
 function ScrollCheck() {
-    if(OnScreen('.worktile') && $('.worktile').css('opacity') == 0){
-    	toggleContainers('.worktile')
-    }
+    if(OnScreen('.worktile') && !$("#Work").hasClass("done")){
+    	DoToAll($('.worktile'), function(div){
+    		div.animate({opacity : 1}); 
+    	}, 100);
+    	$("#Work").addClass("done");
+	}
 }
 
 $( document ).ready(function() {
 		$('#Welcome').Banner();
+
+		$('.worktile').css({height: $('.worktile').width()})
 
 		$('.imgcontainer').click(function(e){
 			var selector = $(this).index() > 0 ? '.imgcontainer.img'+$(this).index() : '.imgcontainer.img3';
@@ -132,11 +71,15 @@ $( document ).ready(function() {
 		$('.selector li').click(function(e){
 			var header = $(this).text()
 
-			HideAll('.selector li .overlay');
+			DoToAll($('.selector li .overlay'), function(div){
+				 $(div).hide();
+			 });
 			$(this).find('.overlay').show();
 			DoClip($(this).find('.overlay'), e.offsetX, e.offsetY, 200);
-			$('.abouttext .identifier h2').text(header.toUpperCase());
-			HideAll('.content p');
+			$($('.abouttext .identifier h2')).text(header.toUpperCase());
+			DoToAll($('.content p'), function(div){ 
+				div.hide();
+			 });
 			$('.content .'+header).show();
 		});
 
@@ -162,9 +105,41 @@ $( document ).ready(function() {
 		});
 
 		$('.worktile img').click(function(){
-			console.log(this)
-			var overlay = $(this).parent().find(".overlay")
-			overlay.css({background: GetDominantColour(this), zIndex:200})
+			var img = $(this);
+			var parent = $(this).parent();
+			var overlay = parent.find(".overlay");
+			var offset = RelativeDistance($('#Work .container'), parent);
+
+			
+			DoToAll($(".worktile").not($(this).parent()), function(div){
+				div.css({opacity: 0})
+			}, 100);
+			
+			overlay.css({background: "blue", zIndex:200});
 			DoClip(overlay, this.height/2, this.width/2, 300);
+
+			setTimeout(function(){
+				//overlay.css();
+				$('.worktile').not(parent).css({display:'none'});
+				parent.find('img').hide();
+				parent.css({left: offset})
+			}, 800);
+
+			setTimeout(function(){
+				parent.css({width: "100%", left:0, height:"156px" })
+				overlay.css({ "-webkit-clip-path": "none"})
+			}, 850);
+
+			setTimeout(function(){
+				parent.find('.big').css({ zIndex:201, display:"block"});
+				DoClip(parent.find('.big'), 0, 0, 2000);
+			},1010)
+
+
+
+			
+
+
+			
 		});
 });
