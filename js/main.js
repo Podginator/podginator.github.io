@@ -153,6 +153,9 @@ $( document ).ready(function() {
 						overlay.find(".identifier").slideDown();
 						setTimeout(function(){
 							overlay.children().fadeIn();
+							$('html, body').stop().animate({
+								scrollTop:$("#Work").offset().top -40
+							},400);
 						}, 500);
 					}, 300);
 				}, 50);
