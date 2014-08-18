@@ -286,6 +286,7 @@ header{
 	top:0;
 	background: #FFF;
 	transition: all 0.3s ease-in-out;
+	transition: background 2s ease-in-out;
 }
 
 #Work .worktile .overlay div{
