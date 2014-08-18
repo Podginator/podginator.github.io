@@ -11,11 +11,10 @@ function DoClip(div, x, y, size){
 }
 
 function GetDominantColour(image){
-
 	var canvas = document.createElement('canvas'),
-		context = canvas.getContext('2d');
+		context = canvas.getContext('2d'),
+		rgb = {r:{},g:{},b:{}}
 
-	var rgb = {r:{},g:{},b:{}}
 	context.drawImage(image, 0,0,image.width, image.height)
 	var img = context.getImageData(0,0,image.width,image.height)
 	var i = count = 0;
@@ -51,9 +50,7 @@ function ScrollCheck() {
 
 var prevLeft = 0;
 
-
 //Comment this at some point, it's gonna suck to go back to.
-
 $( document ).ready(function() {
 		$('#Welcome').Banner();
 		var workHeight =  $('.worktile').width()
@@ -70,7 +67,7 @@ $( document ).ready(function() {
 		$('.imgcontainer').click(function(e){
 			//Cycle through the pictures of myself
 			var selector = $(this).index() > 0 ? '.imgcontainer.img'+$(this).index() : '.imgcontainer.img3';
-			var currentDiv = $(this)
+			var currentDiv = $(this);
 			$(this).removeClass('index')
 			$(selector).removeClass("hide").addClass('index')
 			//Perform the circle clip, fading in on firefox (Unfortunately.)
@@ -119,7 +116,7 @@ $( document ).ready(function() {
 			}
 		}) 
 
-		//Auto Page SCrolling
+		//Auto Page Scrolling
 		$('nav a').click(function(){
 			$('html, body').stop().animate({
 				scrollTop:$("#"+$(this).attr('href')).offset().top -40
@@ -127,12 +124,11 @@ $( document ).ready(function() {
 			return false;
 		});
 
-
 		$('.worktile img').click(function(){
-			var img = $(this);
-			var parent = $(this).parent();
-			var overlay = parent.find(".overlay");
-			var offset = RelativeDistance($('#Work .container'), parent);
+			var img = $(this),
+				parent = $(this).parent(),
+				overlay = parent.find(".overlay");
+				offset = RelativeDistance($('#Work .container'), parent);
 			prevLeft = $(window).width() > 500 ? offset : 0;
 			
 			DoToAll($(".worktile").not($(this).parent()), function(div){
@@ -149,13 +145,14 @@ $( document ).ready(function() {
 				setTimeout(function(){
 					parent.css({width: "100%", left:0, height:"500" })
 					overlay.css({ "-webkit-clip-path": "none", background:"white"})
+					$('html, body').stop().animate({
+						scrollTop:$("#Work").offset().top -40
+					},400);
 					setTimeout(function(){
 						overlay.find(".identifier").slideDown();
 						setTimeout(function(){
 							overlay.children().fadeIn();
-							$('html, body').stop().animate({
-								scrollTop:$("#Work").offset().top -40
-							},400);
+							
 						}, 500);
 					}, 300);
 				}, 50);

@@ -14,7 +14,6 @@ function DoToAll(div, fn, delay){
 	});	
 }
 
-
 function ApplyChildren(div, fn){
 	try{
 		var children = div.children();
@@ -32,7 +31,6 @@ function ApplyChildren(div, fn){
 	}
 }
 
-
 function RoundToTen(num){
 	return Math.round(num/10)*10;
 }
@@ -40,8 +38,6 @@ function RoundToTen(num){
 function RelativeDistance(parent, child){
 	var parentDistance = parent.offset().left;
 	var childDistance = child.offset().left;
-	console.log(parentDistance, childDistance)
-
 	return childDistance - parentDistance;
 }
 
@@ -52,18 +48,15 @@ function GetMode(data){
 	i = 1;
 	while (data[i++] != null){
 		var colour = data[i];
-		if (modeMap[colour]!=null)
-		{
+		if (modeMap[colour]!=null){
 			modeMap[colour] += 1
 		}else{
 			modeMap[colour] = 1
 		}
-
 		if(modeMap[colour] > maxCount && colour != 0){
 			maxCount = colour
 		}
 	}
-
 	return maxCount;
 }
 
@@ -78,7 +71,6 @@ function GetAverage(data){
 		}
 	}
 	return Math.floor(total/count);
-
 }
 
 function stringToHex(s){
