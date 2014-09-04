@@ -242,7 +242,7 @@ header{
 	opacity:0;
 	margin:0.2%;
 	background:white;
-	transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out, opacity 0.75s;
 }
 
 #Work .worktile h2{

@@ -140,7 +140,7 @@ $( document ).ready(function() {
 
 			setTimeout(function(){
 				$('.worktile').not(parent).css({display:'none'});
-				parent.find('img').hide();
+				img.hide();
 				parent.css({left: offset})
 				setTimeout(function(){
 					parent.css({width: "100%", left:0, height:"500" })
@@ -151,22 +151,20 @@ $( document ).ready(function() {
 					setTimeout(function(){
 						overlay.find(".identifier").slideDown();
 						setTimeout(function(){
-							overlay.children().fadeIn();
-							
+							overlay.children().fadeIn();	
 						}, 500);
 					}, 300);
 				}, 50);
 			}, 400);
-
-			
 		});
 
+
 		$('.overlay span').click(function(){
-			var parent = $(this).parent().parent().parent();
-			var img = parent.find('img');2
+			var parent = $(this).closest('.worktile');
+			var img = parent.find('img');
 
 			ApplyChildren(parent, function(div){div.removeAttr('style')})
-			parent.css({width:'', left: prevLeft, height:workHeight})
+			parent.css({width:'', left: prevLeft, height:workHeight, opacity:0})
 
 			$(this).parent().parent().find('div').fadeOut(function(){
 				$(this).parent().css({display:'none'})
@@ -182,7 +180,7 @@ $( document ).ready(function() {
 							div.css({height:workHeight})
 							div.show();
 							div.animate({opacity:1})
-						},10)
+						},100)
 					},500)
 				}, 500);
 				
