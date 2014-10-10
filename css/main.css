@@ -59,7 +59,7 @@ header{
 	width:100%;
 	text-align:center;
 	height:520px;
-	background: #6a1b9a; 
+	background: #6a1b9a;
 	background: -webkit-radial-gradient(bottom center, ellipse cover, #6a1b9a -40%,#4a148c 100%); /* Chrome10+,Safari5.1+ */
 }
 
@@ -116,7 +116,7 @@ header{
 	top:25px;
 	width:300px;
 	height:366px;
-	
+
 }
 
 #AboutMe .abouttext{
@@ -245,13 +245,17 @@ header{
 	transition: all 0.5s ease-in-out, opacity 0.75s;
 }
 
-#Work .worktile h2{
+#Work .worktile .workOverlay{
 	position:absolute;
+	width:100%;
+	text-align:center;
+	background:rgba(20,20,20,0.75);
 	z-index:3;
 	font-size:20px;
 	color:white;
-	top:75%;
-	left:5%;
+	top:85%;
+	padding-top:5%;
+	height:10%;
 }
 
 #Work .worktile img{
@@ -318,6 +322,22 @@ header{
 }
 
 /*Contact Me */
+
+#SocialMedia
+{
+	color:white;
+	font-size:20px;
+	width:100%;
+	height:auto;
+	background:#222;
+}
+
+#SocialMedia .container
+{
+	height:auto;
+}
+
+
 #ContactMe{
 	color:white;
 	font-size:20px;
@@ -326,15 +346,36 @@ header{
 	background:#333333;
 }
 
+#SocialMedia .social ul li
+{
+	float:left;
+	width:33%;
+	text-align: center;
+	transition: all 0.5s ease-in-out;
+}
+
+#SocialMedia .social ul li:hover
+{
+	background: rgba(100,100,100,0.3);
+}
+
+#SocialMedia .social ul li img
+{
+	width:25%;
+	height:auto;
+}
+
 #ContactMe .container{
 	height:auto;
 }
 
-#ContactMe .contactsection{
+#ContactMe .contactsection
+{
 	float:left;
 	width:32%;
 	margin: 10px 0.5% 0 0.5%;
-	height:450px;
+	margin-top:20px;
+	height:330px;
 }
 
 #ContactMe .contactsection h2{
@@ -451,7 +492,7 @@ header{
 	nav a:hover{
 		background-position: 0 -100%;
 	}
-	
+
 	header{
 		height:480px;
 	}
