@@ -126,15 +126,17 @@ $( document ).ready(function() {
 
 		$('.worktile img').click(function(){
 			var img = $(this),
-				parent = $(this).parent(),
-				overlay = parent.find(".overlay");
-				offset = RelativeDistance($('#Work .container'), parent);
+			parent = $(this).parent(),
+			overlay = parent.find(".overlay");
+			offset = RelativeDistance($('#Work .container'), parent);
 			prevLeft = $(window).width() > 500 ? offset : 0;
 			
 			DoToAll($(".worktile").not($(this).parent()), function(div){
 				div.css({opacity: 0})
 			}, 100);
 			
+			parent.find('.workOverlay').css({display:'none'})
+
 			overlay.css({background:GetDominantColour(this), zIndex:200});
 			DoClip(overlay, this.height/2, this.width/2, 300);
 
