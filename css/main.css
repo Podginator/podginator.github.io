@@ -10,6 +10,14 @@ body{
 }
 
 /*Navigation*/
+#AboutMe p
+{
+	line-height:130%;
+}
+
+#Work{
+	line-height:130%;
+}
 
 h1{
 	color: white;
@@ -476,6 +484,26 @@ header{
 }
 
 @media screen and (max-width: 500px){
+	
+	#SocialMedia .social ul li
+	{
+		float:left;
+		width:33%;
+		text-align: center;
+	}
+
+
+	#SocialMedia .social ul li:hover
+	{
+		background: rgba(100,100,100,0.3);
+	}
+
+	#SocialMedia .social ul li img
+	{
+		width:75%;
+		height:auto;
+	}
+
 	nav{
 		text-align:center;
 	}
@@ -543,6 +571,11 @@ header{
 		margin:auto;
 		margin-top:5px;
 		margin-bottom:5px;
+	}
+	
+	#ContactMe
+	{
+		padding-top:20px;
 	}
 
 	#ContactMe .contactsection{
